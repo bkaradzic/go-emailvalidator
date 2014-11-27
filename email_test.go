@@ -21,10 +21,24 @@ func validEmail(t *testing.T, email string) {
 func invalidEmail(t *testing.T, email string) {
 
 	result := IsValid(email)
-	result = result && !IsDisposable(email)
 
 	if result {
 		t.Error("Should be invalid ", email)
+	}
+}
+
+func disposableEmail(t *testing.T, disposable bool, email string) {
+
+	result := IsDisposable(email)
+
+	if disposable {
+		if !result {
+			t.Error("Should be disposable ", email)
+		}
+	} else {
+		if result {
+			t.Error("Should be non-disposable ", email)
+		}
 	}
 }
 
@@ -83,6 +97,8 @@ func TestEmail(t *testing.T) {
 	invalidEmail(t, "hello world@example.com")
 	invalidEmail(t, "gatsby@f.sc.ot.t.f.i.tzg.era.l.d.")
 
-	invalidEmail(t, "test@mailinator.com")
+	disposableEmail(t, true, "test@mailinator.com")
+	disposableEmail(t, true, "test@za.com")
+	disposableEmail(t, false, "test@0za.com")
 }
 

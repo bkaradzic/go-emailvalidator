@@ -392,7 +392,7 @@ var (
 		"spamgourmet.com",
 		"spamgourmet.net",
 		"spamgourmet.org",
-		"SpamHerePlease.com",
+		"spamhereplease.com",
 		"spamhole.com",
 		"spamify.com",
 		"spaml.de",
@@ -420,7 +420,7 @@ var (
 		"tempe-mail.com",
 		"tempemail.co.za",
 		"tempemail.com",
-		"TempEMail.net",
+		"tempemail.net",
 		"tempinbox.co.uk",
 		"tempinbox.com",
 		"tempmaildemo.com",
@@ -502,8 +502,14 @@ var (
 
 func IsDisposable(email string) bool {
 
+	at := strings.LastIndex(email, "@")
+	if at == -1 {
+		return true
+	}
+	domain := email[at+1:]
+
 	for _, suffix := range disposableEmailDomains {
-		if strings.HasSuffix(email, suffix) {
+		if domain == suffix {
 			return true
 		}
 	}
