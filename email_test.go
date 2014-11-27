@@ -97,8 +97,8 @@ func TestEmail(t *testing.T) {
 	invalidEmail(t, "hello world@example.com")
 	invalidEmail(t, "gatsby@f.sc.ot.t.f.i.tzg.era.l.d.")
 
-	disposableEmail(t, true, "test@mailinator.com")
-	disposableEmail(t, true, "test@za.com")
+	disposableEmail(t, true, "test@mailInator.com")
+	disposableEmail(t, true, "test@zA.com")
 	disposableEmail(t, false, "test@0za.com")
 }
 

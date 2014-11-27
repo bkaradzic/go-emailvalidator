@@ -506,7 +506,7 @@ func IsDisposable(email string) bool {
 	if at == -1 {
 		return true
 	}
-	domain := email[at+1:]
+	domain := strings.ToLower(email[at+1:])
 
 	for _, suffix := range disposableEmailDomains {
 		if domain == suffix {
