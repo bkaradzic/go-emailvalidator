@@ -8,6 +8,7 @@ package emailvalidator
 import (
 	"regexp"
 	"strings"
+	"golang.org/x/net/idna"
 )
 
 var (
@@ -537,15 +538,15 @@ func IsValid(email string) bool {
 		return false
 	}
 
-	local := email[0:at]
-	localLen := len(local)
-	domain := email[at+1:]
-	domainLen := len(domain)
+	local, _ := idna.ToASCII(email[0:at])
+	domain, _ := idna.ToASCII(email[at+1:])
 
+	localLen := len(local)
 	if localLen < 1 || localLen > 64 {
 		return false
 	}
 
+	domainLen := len(domain)
 	if domainLen < 1 || domainLen > 255 {
 		return false
 	}

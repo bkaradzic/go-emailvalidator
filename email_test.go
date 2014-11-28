@@ -80,6 +80,9 @@ func TestEmail(t *testing.T) {
 	validEmail(t, "local@sld.newTLD")
 	validEmail(t, "punycode-numbers-in-tld@sld.xn--3e0b707e")
 	validEmail(t, "local@sub.domains.com")
+	validEmail(t, "ichiro.yamamoto@xn--wgv71a.jp")
+	validEmail(t, "山本一呂@日本.jp")
+	validEmail(t, "山本一呂@xn--wgv71a.jp")
 //	validEmail(t, "bracketed-IP-instead-of-domain@[127.0.0.1]") // not supported yet...
 
 	invalidEmail(t, "abc@def@example.com")
