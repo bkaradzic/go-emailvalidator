@@ -17,6 +17,12 @@ Usage
 
 The package name is `emailvalidator`
 
+See also
+--------
+
+https://github.com/lavab/disposable - A list of disposable/temporary email
+address domains.
+
 Contact
 -------
 
